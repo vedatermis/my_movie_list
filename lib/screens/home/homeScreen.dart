@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_list/blocs/popular_movies/popular_movies_bloc.dart';
+import 'package:my_movie_list/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = "/home";
@@ -27,11 +28,7 @@ class HomeScreen extends StatelessWidget {
             return ListView.builder(
                 itemCount: state.popularMovies.length,
                 itemBuilder: (buildContext, index) {
-                  return Card(
-                    child: ListTile(
-                      title: Text(state.popularMovies[index].title!),
-                    ),
-                  );
+                  return MovieCard(movie: state.popularMovies[index]);
                 });
           } else {
             return Container();

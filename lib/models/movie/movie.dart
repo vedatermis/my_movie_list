@@ -2,6 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:my_movie_list/models/models.dart';
 
 class Movie extends Equatable {
+  final String movieSmallImageBasePath = 'https://image.tmdb.org/t/p/w500';
+  final String movieOriginalImageBasePath =
+      'https://image.tmdb.org/t/p/original';
+
   bool? adult;
   String? backdropPath;
   Collection? collection;
@@ -57,7 +61,7 @@ class Movie extends Equatable {
 
   Movie.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
-    backdropPath = json['backdrop_path'];
+    backdropPath = movieSmallImageBasePath + json['backdrop_path'];
     var collection = json['belongs_to_collection'] != null
         ? Collection.fromJson(json['belongs_to_collection'])
         : null;
@@ -75,7 +79,7 @@ class Movie extends Equatable {
     originalTitle = json['original_title'];
     overview = json['overview'];
     popularity = json['popularity'];
-    posterPath = json['poster_path'];
+    posterPath = movieOriginalImageBasePath + json['poster_path'];
     if (json['production_companies'] != null) {
       productionCompanies = <ProductionCompany>[];
       json['production_companies'].forEach((v) {
