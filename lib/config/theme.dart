@@ -12,21 +12,21 @@ ThemeData theme() {
 TextTheme textTheme() {
   return const TextTheme(
     headline1: TextStyle(
-        color: Color(0xffEEEEEE), fontSize: 35, fontWeight: FontWeight.bold),
+        color: Color(0xffEEEEEE), fontSize: 32, fontWeight: FontWeight.bold),
     headline2: TextStyle(
-        color: Color(0xffEEEEEE), fontSize: 29, fontWeight: FontWeight.bold),
+        color: Color(0xffEEEEEE), fontSize: 24, fontWeight: FontWeight.bold),
     headline3: TextStyle(
-        color: Color(0xffEEEEEE), fontSize: 25, fontWeight: FontWeight.bold),
+        color: Color(0xffEEEEEE), fontSize: 18, fontWeight: FontWeight.bold),
     headline4: TextStyle(
-        color: Color(0xffEEEEEE), fontSize: 23, fontWeight: FontWeight.bold),
+        color: Color(0xffEEEEEE), fontSize: 16, fontWeight: FontWeight.bold),
     headline5: TextStyle(
-        color: Color(0xffEEEEEE), fontSize: 21, fontWeight: FontWeight.bold),
+        color: Color(0xffEEEEEE), fontSize: 14, fontWeight: FontWeight.bold),
     headline6: TextStyle(
-        color: Color(0xffEEEEEE), fontSize: 21, fontWeight: FontWeight.normal),
+        color: Color(0xffEEEEEE), fontSize: 14, fontWeight: FontWeight.normal),
     bodyText1: TextStyle(
-        color: Color(0xffEEEEEE), fontSize: 17, fontWeight: FontWeight.normal),
+        color: Color(0xffEEEEEE), fontSize: 12, fontWeight: FontWeight.normal),
     bodyText2: TextStyle(
-        color: Color(0xffEEEEEE), fontSize: 15, fontWeight: FontWeight.normal),
+        color: Color(0xffEEEEEE), fontSize: 10, fontWeight: FontWeight.normal),
   );
 }
 
