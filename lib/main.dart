@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (builder) =>
                 TopRatedMoviesBloc(movieRepository: MovieRepository())
-                  ..add(TopRatedMovieLoadEvent(defaultLocale)))
+                  ..add(TopRatedMovieLoadEvent(defaultLocale, 1)))
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

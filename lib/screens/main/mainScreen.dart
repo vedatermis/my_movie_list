@@ -36,7 +36,6 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: screens.elementAt(_selectedTabIndex),
       bottomNavigationBar: BottomNavigationBar(
-        //backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),

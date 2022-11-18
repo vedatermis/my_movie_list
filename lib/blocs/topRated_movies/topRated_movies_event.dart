@@ -11,9 +11,10 @@ class TopRatedMovieInitialEvent extends TopRatedMoviesEvent {}
 
 class TopRatedMovieLoadEvent extends TopRatedMoviesEvent {
   final String language;
+  final int page;
 
-  const TopRatedMovieLoadEvent(this.language);
+  const TopRatedMovieLoadEvent(this.language, this.page);
 
   @override
-  List<Object> get props => [language];
+  List<Object> get props => [language, page];
 }

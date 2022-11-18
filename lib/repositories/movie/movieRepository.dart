@@ -19,8 +19,11 @@ class MovieRepository extends BaseMovieRepository {
 
   @override
   Future<List<Movie>> getPopulerMovies(String language, int page) async {
+    language = language.replaceAll('_', '-');
+    final regionInfo = language.split('-');
+
     final response = await http.get(Uri.parse(
-        '$baseUrl/movie/popular?api_key=$movieApiKey&language=$language&page=$page'));
+        '$baseUrl/movie/popular?api_key=$movieApiKey&language=${regionInfo.first}&page=$page§region=${regionInfo.last}'));
 
     if (response.statusCode == 200) {
       var movieList = json.decode(response.body);
@@ -34,9 +37,11 @@ class MovieRepository extends BaseMovieRepository {
   }
 
   @override
-  Future<List<Movie>> getTopRatedMovies(String language) async {
+  Future<List<Movie>> getTopRatedMovies(String language, int page) async {
+    language = language.replaceAll('_', '-');
+    final regionInfo = language.split('-');
     final response = await http.get(Uri.parse(
-        '$baseUrl/movie/top_rated?api_key=$movieApiKey&language=$language&page=1'));
+        '$baseUrl/movie/top_rated?api_key=$movieApiKey&language=${regionInfo.first}&page=$page&region=${regionInfo.last}'));
 
     if (response.statusCode == 200) {
       var movieList = json.decode(response.body);

@@ -22,7 +22,7 @@ class TopRatedMoviesBloc
     emit(TopRatedMoviesLoading());
 
     final latestMovies =
-        await _movieRepository.getTopRatedMovies(event.language);
+        await _movieRepository.getTopRatedMovies(event.language, event.page);
 
     emit(TopRatedMoviesLoaded(latestMovies));
   }
