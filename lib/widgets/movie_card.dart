@@ -54,17 +54,7 @@ class MovieCard extends StatelessWidget {
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
                   color: Colors.red,
-                  // gradient: LinearGradient(
-                  //   begin: Alignment.topCenter,
-                  //   end: Alignment.bottomCenter,
-                  //   colors: [
-                  //     Color.fromARGB(200, 0, 0, 0),
-                  //     Color.fromARGB(0, 0, 0, 0)
-                  //   ],
-                  // ),
                 ),
-                // padding: const EdgeInsets.symmetric(
-                //     vertical: 10.0, horizontal: 20.0),
                 child: Text(
                   movie.voteAverage.toString(),
                   style: Theme.of(context).textTheme.headline5,

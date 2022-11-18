@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_movie_list/blocs/topRated_movies/topRated_movies_bloc.dart';
 import 'package:my_movie_list/blocs/movie/movie_bloc.dart';
 import 'package:my_movie_list/blocs/popular_movies/popular_movies_bloc.dart';
 import 'package:my_movie_list/config/app_router.dart';
@@ -27,9 +28,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (builder) =>
                 PopularMoviesBloc(movieRepository: MovieRepository())
-                  ..add(PopularMoviesLoadEvent(defaultLocale, 1)))
+                  ..add(PopularMoviesLoadEvent(defaultLocale, 1))),
+        BlocProvider(
+            create: (builder) =>
+                TopRatedMoviesBloc(movieRepository: MovieRepository())
+                  ..add(TopRatedMovieLoadEvent(defaultLocale)))
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'My Movie List',
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
