@@ -61,7 +61,11 @@ class Movie extends Equatable {
 
   Movie.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
-    backdropPath = movieSmallImageBasePath + json['backdrop_path'];
+
+    backdropPath = json['backdrop_path'];
+
+    //backdropPathbackdropPath = '$movieSmallImageBasePath/3Ju562T1AevkoaAWKLnWocI8RaJ.jpg';
+
     var collection = json['belongs_to_collection'] != null
         ? Collection.fromJson(json['belongs_to_collection'])
         : null;
@@ -79,7 +83,7 @@ class Movie extends Equatable {
     originalTitle = json['original_title'];
     overview = json['overview'];
     popularity = json['popularity'];
-    posterPath = movieOriginalImageBasePath + json['poster_path'];
+    posterPath = json['poster_path'];
     if (json['production_companies'] != null) {
       productionCompanies = <ProductionCompany>[];
       json['production_companies'].forEach((v) {

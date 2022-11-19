@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_movie_list/config/assets.dart';
 import 'package:my_movie_list/models/models.dart';
 
 class MovieCard extends StatelessWidget {
@@ -15,11 +16,17 @@ class MovieCard extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(5)),
         child: Stack(
           children: [
-            Image.network(
-              movie.backdropPath!,
-              fit: BoxFit.cover,
-              width: MediaQuery.of(context).size.width * 0.95,
-            ),
+            movie.backdropPath == null
+                ? Image.asset(
+                    AppImages().noImage,
+                    fit: BoxFit.cover,
+                    width: MediaQuery.of(context).size.width * 0.95,
+                  )
+                : Image.network(
+                    movie.movieSmallImageBasePath + movie.backdropPath!,
+                    fit: BoxFit.cover,
+                    width: MediaQuery.of(context).size.width * 0.95,
+                  ),
             Positioned(
               bottom: 0.0,
               left: 0.0,

@@ -7,4 +7,5 @@ abstract class BaseMovieRepository {
   Future<Movie> getMovieById(int id);
   Future<List<Movie>> getPopulerMovies(String language, int page);
   Future<List<Movie>> getTopRatedMovies(String language, int page);
+  Future<List<Movie>> getUpcomingMovies(String language, int page);
 }
