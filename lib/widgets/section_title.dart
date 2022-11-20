@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_movie_list/models/movie_type.dart';
 
 class SectionTitle extends StatelessWidget {
+  final MovieType movieType;
   final String title;
-  const SectionTitle({required this.title, super.key});
+  const SectionTitle({required this.title, required this.movieType, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,8 @@ class SectionTitle extends StatelessWidget {
               style: Theme.of(context).textTheme.headline3,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () =>
+                  Navigator.pushNamed(context, '/seeAll', arguments: movieType),
               child: Text(
                 'See All',
                 style: Theme.of(context)
@@ -29,8 +32,3 @@ class SectionTitle extends StatelessWidget {
         ));
   }
 }
-
-// Align(
-//         alignment: Alignment.topLeft,
-//         child: 
-//       ),

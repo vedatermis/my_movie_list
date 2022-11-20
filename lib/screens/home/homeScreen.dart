@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_movie_list/models/movie_type.dart';
 import 'package:my_movie_list/widgets/section_title.dart';
 import 'package:my_movie_list/widgets/widgets.dart';
 
@@ -23,11 +24,12 @@ class HomeScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: const [
-              SectionTitle(title: 'Popular Movies'),
+              SectionTitle(
+                  title: 'Popular Movies', movieType: MovieType.Popular),
               PopularMovies(),
-              SectionTitle(title: 'Top Rated'),
+              SectionTitle(title: 'Top Rated', movieType: MovieType.TopRated),
               TopRatedMovies(),
-              SectionTitle(title: 'Upcoming'),
+              SectionTitle(title: 'Upcoming', movieType: MovieType.Upcoming),
               UpcomingMovies(),
               SizedBox(height: 20),
             ],
