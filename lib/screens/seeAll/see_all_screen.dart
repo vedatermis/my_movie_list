@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_movie_list/blocs/popular_movies/popular_movies_bloc.dart';
 import 'package:my_movie_list/models/movie_type.dart';
+import 'package:my_movie_list/widgets/widgets.dart';
 
 class SeeAll extends StatelessWidget {
   static const String routeName = '/seeAll';
@@ -24,18 +23,23 @@ class SeeAll extends StatelessWidget {
           style: Theme.of(context).textTheme.headline4,
         ),
       ),
-      body: BlocBuilder<PopularMoviesBloc, PopularMoviesState>(
-          builder: (builder, state) {
-        if (state is PopularMoviesLoading) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state is PopularMoviesLoaded) {
-          return Container(
-            child: Text(state.popularMovies[0].title!),
-          );
-        } else {
-          return const SizedBox();
-        }
-      }),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: getGridView(movieType),
+      ),
     );
+  }
+}
+
+Widget getGridView(MovieType movieType) {
+  switch (movieType) {
+    case MovieType.Popular:
+      return const PopularMovieGridView();
+
+    case MovieType.TopRated:
+      return const TopRatedMovieGridView();
+
+    case MovieType.Upcoming:
+      return const UpcomingMovieGridView();
   }
 }
