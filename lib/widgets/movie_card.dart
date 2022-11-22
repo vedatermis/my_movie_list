@@ -11,7 +11,8 @@ class MovieCard extends StatelessWidget {
     return Hero(
       tag: movie.id!,
       child: GestureDetector(
-        onTap: () {},
+        onTap: () =>
+            Navigator.pushNamed(context, '/movieDetail', arguments: movie.id),
         child: Container(
           margin: const EdgeInsets.symmetric(
             horizontal: 5,

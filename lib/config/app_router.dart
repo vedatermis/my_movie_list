@@ -12,6 +12,9 @@ class AppRouter {
       case '/seeAll':
         return SeeAll.route(movieType: settings.arguments as MovieType);
 
+      case '/movieDetail':
+        return MovieDetail.route(movieId: settings.arguments as int);
+
       default:
         return _errorRoute();
     }

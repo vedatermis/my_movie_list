@@ -11,7 +11,8 @@ class MovieGridCard extends StatelessWidget {
     return Hero(
       tag: movie.id!,
       child: GestureDetector(
-        onTap: () {},
+        onTap: () =>
+            Navigator.pushNamed(context, '/movieDetail', arguments: movie.id),
         child: Container(
           width: MediaQuery.of(context).size.width * 0.4,
           decoration: BoxDecoration(
