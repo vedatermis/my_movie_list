@@ -16,12 +16,9 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     on<LoadMovieEvent>(_loadMovieEvent);
   }
 
-  FutureOr<void> _loadMovieEvent(
-      LoadMovieEvent event, Emitter<MovieState> emit) async {
+  FutureOr<void> _loadMovieEvent(LoadMovieEvent event, Emitter<MovieState> emit) async {
     emit(MovieLoading());
-
-    final movie = await _movieRepository.getMovieById(event.id);
-
+    final movie = await _movieRepository.getMovieById(event.id, event.language);
     emit(MovieLoaded(movie));
   }
 }

@@ -6,9 +6,11 @@ import 'package:http/http.dart' as http;
 
 class MovieRepository extends BaseMovieRepository {
   @override
-  Future<Movie> getMovieById(int id) async {
-    final response =
-        await http.get(Uri.parse('$baseUrl/movie/$id?api_key=$movieApiKey'));
+  Future<Movie> getMovieById(int id, String language) async {
+    language = language.replaceAll('_', '-');
+    final regionInfo = language.split('-');
+
+    final response = await http.get(Uri.parse('$baseUrl/movie/$id?api_key=$movieApiKey&language=${regionInfo.first}'));
 
     if (response.statusCode == 200) {
       return Movie.fromJson(jsonDecode(response.body));
@@ -22,15 +24,13 @@ class MovieRepository extends BaseMovieRepository {
     language = language.replaceAll('_', '-');
     final regionInfo = language.split('-');
 
-    final response = await http.get(Uri.parse(
-        '$baseUrl/movie/popular?api_key=$movieApiKey&language=${regionInfo.first}&page=$page§region=${regionInfo.last}'));
+    final response =
+        await http.get(Uri.parse('$baseUrl/movie/popular?api_key=$movieApiKey&language=${regionInfo.first}&page=$page§region=${regionInfo.last}'));
 
     if (response.statusCode == 200) {
       var movieList = json.decode(response.body);
 
-      return movieList["results"]
-          .map<Movie>((movie) => Movie.fromJson(movie))
-          .toList();
+      return movieList["results"].map<Movie>((movie) => Movie.fromJson(movie)).toList();
     } else {
       throw Exception('Failed to load popular movies');
     }
@@ -40,15 +40,13 @@ class MovieRepository extends BaseMovieRepository {
   Future<List<Movie>> getTopRatedMovies(String language, int page) async {
     language = language.replaceAll('_', '-');
     final regionInfo = language.split('-');
-    final response = await http.get(Uri.parse(
-        '$baseUrl/movie/top_rated?api_key=$movieApiKey&language=${regionInfo.first}&page=$page&region=${regionInfo.last}'));
+    final response =
+        await http.get(Uri.parse('$baseUrl/movie/top_rated?api_key=$movieApiKey&language=${regionInfo.first}&page=$page&region=${regionInfo.last}'));
 
     if (response.statusCode == 200) {
       var movieList = json.decode(response.body);
 
-      return movieList["results"]
-          .map<Movie>((movie) => Movie.fromJson(movie))
-          .toList();
+      return movieList["results"].map<Movie>((movie) => Movie.fromJson(movie)).toList();
     } else {
       throw Exception('Failed to load top rated movies');
     }
@@ -58,15 +56,13 @@ class MovieRepository extends BaseMovieRepository {
   Future<List<Movie>> getUpcomingMovies(String language, int page) async {
     language = language.replaceAll('_', '-');
     final regionInfo = language.split('-');
-    final response = await http.get(Uri.parse(
-        '$baseUrl/movie/upcoming?api_key=$movieApiKey&language=${regionInfo.first}&page=$page&region=${regionInfo.last}'));
+    final response =
+        await http.get(Uri.parse('$baseUrl/movie/upcoming?api_key=$movieApiKey&language=${regionInfo.first}&page=$page&region=${regionInfo.last}'));
 
     if (response.statusCode == 200) {
       var movieList = json.decode(response.body);
 
-      return movieList["results"]
-          .map<Movie>((movie) => Movie.fromJson(movie))
-          .toList();
+      return movieList["results"].map<Movie>((movie) => Movie.fromJson(movie)).toList();
     } else {
       throw Exception('Failed to load upcoming movies');
     }

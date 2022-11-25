@@ -10,10 +10,11 @@ abstract class MovieEvent extends Equatable {
 class InitialMovie extends MovieEvent {}
 
 class LoadMovieEvent extends MovieEvent {
+  final String language;
   final int id;
 
-  const LoadMovieEvent(this.id);
+  const LoadMovieEvent(this.id, this.language);
 
   @override
-  List<Object> get props => [id];
+  List<Object> get props => [id, language];
 }
