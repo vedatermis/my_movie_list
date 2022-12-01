@@ -59,16 +59,15 @@ class MovieCard extends StatelessWidget {
                 Positioned(
                   top: 10,
                   left: 10,
-                  //right: 0,
                   child: Container(
                     width: 37,
                     height: 20,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
                       color: Colors.red,
                     ),
                     child: Text(
-                      movie.voteAverage.toString(),
+                      movie.voteAverage!.toStringAsFixed(1),
                       style: Theme.of(context).textTheme.headline5,
                       textAlign: TextAlign.center,
                     ),
