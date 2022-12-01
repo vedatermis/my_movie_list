@@ -39,7 +39,7 @@ class MovieDetailHeader extends StatelessWidget {
         ),
         Container(
           decoration: BoxDecoration(
-              border: Border.all(color: Colors.red),
+              border: Border.all(color: Colors.red, width: 1.7),
               borderRadius: BorderRadius.circular(16)),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

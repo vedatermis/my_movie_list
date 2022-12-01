@@ -72,7 +72,7 @@ class MovieDetail extends StatelessWidget {
                               .copyWith(fontSize: 14),
                           maxLines: 5,
                           textAlign: TextAlign.justify,
-                        )
+                        ),
                       ],
                     ),
                   ),
