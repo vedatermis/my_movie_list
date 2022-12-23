@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_movie_list/blocs/cast/cast_bloc.dart';
 import 'package:my_movie_list/blocs/movie/movie_bloc.dart';
+import 'package:my_movie_list/widgets/cast.dart';
 
 import '../../widgets/widgets.dart';
 
@@ -23,6 +25,7 @@ class MovieDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     final String defaultLocale = Platform.localeName;
     context.read<MovieBloc>().add(LoadMovieEvent(movieId, defaultLocale));
+    context.read<CastBloc>().add(CastLoadEvent(movieId));
 
     return Scaffold(
       appBar: AppBar(
@@ -73,6 +76,22 @@ class MovieDetail extends StatelessWidget {
                           maxLines: 5,
                           textAlign: TextAlign.justify,
                         ),
+                        const SizedBox(height: 10),
+                        BlocBuilder<CastBloc, CastState>(
+                          builder: (context, state) {
+                            if (state is CastLoading) {
+                              return const CircularProgressIndicator();
+                            } else if (state is CastLoaded) {
+                              return SizedBox(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 75,
+                                  child: Casting(casts: state.casts));
+                            } else if (state is CastError) {
+                              return const Text("Error");
+                            }
+                            return const Text("Error");
+                          },
+                        )
                       ],
                     ),
                   ),
